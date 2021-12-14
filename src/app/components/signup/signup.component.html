@@ -1,0 +1,41 @@
+<div class="auth-wrapper m-3">
+    <form class="form-signin" [formGroup]="singupForm" (ngSubmit)="signup()">
+        <h3 class="h3 mb-3 font-weight-normal text-center">Please Register</h3>
+        <div *ngIf="alertShow == 1" class="alert alert-danger" role="alert">
+            {{alertmsg}}
+        </div>
+        <div class="form-group mt-3 ps-5 pe-5">
+            <label>Name</label>
+            <input type="email" class="form-control" formControlName="username" placeholder="Enter Name" required>
+            <span style="color: red;" *ngIf="username && username.touched && username.invalid">
+                Name is required. Min length is 5
+            </span>
+        </div>
+        <div class="form-group mt-3 ps-5 pe-5">
+            <label>Email Address</label>
+            <input type="email" class="form-control" formControlName="email" placeholder="Enter Email" required>
+            <span style="color: red;" *ngIf="email && email.touched && email.invalid">
+                Email is required. Must input email type
+            </span>
+        </div>
+        <div class="form-group mt-3 ps-5 pe-5">
+            <label>Password</label>
+            <input type="password" class="form-control" formControlName="password" placeholder="Enter Password" required>
+            <span style="color: red;" *ngIf="password && password.touched && password.invalid ">
+                password is required. Min length is 6
+            </span>
+            <br>
+            <span style="color: red;" *ngIf="password && password.touched && password.invalid && password.errors?.pattern">
+                password must have at least 1 uppercase lowercase special character and number
+            </span>
+            
+        </div>
+        <div class="justify-content-center text-center">
+            <button type="submit" class="btn btn-block btn-info mt-3" [disabled]="!singupForm.valid">Sign Up</button>
+        </div>
+    </form>
+    
+</div>
+<div class="justify-content-center text-center">
+    have an account ?<button class="btn btn-block btn-info" (click)='gotoLogin()'>Click Here</button>
+</div>

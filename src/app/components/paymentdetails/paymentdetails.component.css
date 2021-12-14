@@ -1,0 +1,7 @@
+table{
+    background-color: #1b2838;
+    color: rgb(255, 255, 255);
+}
+table:hover{
+    background-color: #141e2b;
+}
