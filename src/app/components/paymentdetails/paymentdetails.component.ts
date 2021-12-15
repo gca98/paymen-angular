@@ -5,6 +5,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { timer } from 'rxjs';
 import { Router } from '@angular/router';
+import { UsersService } from 'src/app/services/users.service';
 
 @Component({
   selector: 'app-paymentdetails',
@@ -15,7 +16,7 @@ export class PaymentdetailsComponent implements OnInit {
 
   alertShow = 0
   alertmsg = ""
-  constructor(public paymentdetailService: PaymentdetailsService, private modalService: NgbModal, public router: Router) { }
+  constructor(public paymentdetailService: PaymentdetailsService, public userService: UsersService, private modalService: NgbModal, public router: Router) { }
   paymentDetails: detailPayment[] = []
   ngOnInit(): void {
     this.getPaymentDetails()
@@ -34,7 +35,6 @@ export class PaymentdetailsComponent implements OnInit {
 
   form = {
     status: 'add',
-
     paymentdetailForm: new FormGroup({
       paymentDetailId: new FormControl(''),
       cardOwnerName: new FormControl('', [Validators.required, Validators.minLength(5)]),
@@ -165,7 +165,9 @@ export class PaymentdetailsComponent implements OnInit {
     }
   }
   gotoLogin() {
+    this.userService.logout();
     this.router.navigate(['login'])
+
   }
 
 }

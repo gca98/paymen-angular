@@ -31,5 +31,8 @@ export class UsersService {
     let authToken = localStorage.getItem('access_token')
     return(authToken!==null)? true:false;
   }
+  logout(){
+    return localStorage.clear()
+  }
 
 }

@@ -1,5 +1,5 @@
 <div class="auth-wrapper m-3">
-    
+
     <form class="form-signin" [formGroup]="loginForm" (ngSubmit)="login()">
         <h3 class="h3 mb-3 font-weight-normal text-center">Please Sign In</h3>
         <div *ngIf="alertShow == 1" class="alert alert-danger" role="alert">
@@ -19,7 +19,8 @@
             <span style="color: red;" *ngIf="password && password.touched && password.invalid">
                 password is required. Must input password type
             </span>
-            <span style="color: red;" *ngIf="password && password.touched && password.invalid && password.errors?.pattern">
+            <span style="color: red;"
+                *ngIf="password && password.touched && password.invalid && password.errors?.pattern">
                 password must have at least 1 uppercase lowercase special character and number
             </span>
         </div>
